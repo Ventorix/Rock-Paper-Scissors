@@ -1,0 +1,416 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.header {
+  text-align: center;
+  border: $white 2px solid;
+  border-radius: 6px;
+  background-color: rgb(123, 32, 73);
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    margin-top: 30px;
+    font-size: 52px;
+    color: $blue;
+  }
+
+  &-round {
+    margin-top: 50px;
+    font-size: 38px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+}
+
+.player {
+  &-name {
+    font-size: 32px;
+    text-align: center;
+    margin-top: 55px;
+    font-weight: 700;
+  }
+
+  &-img {
+    margin-top: 20px;
+    background-color: $darkBlue;
+    width: 250px;
+    height: 250px;
+    border-radius: 6px;
+    border: 2px solid $white;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("/src/img/rock.png");
+  }
+}
+
+.opponent {
+  &-name {
+    font-size: 32px;
+    text-align: center;
+    margin-top: 55px;
+    font-weight: 700;
+  }
+
+  &-img {
+    margin-top: 20px;
+    background-color: $darkBlue;
+    width: 250px;
+    height: 250px;
+    border-radius: 6px;
+    border: 2px solid $white;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/rock.png");
+    transform: scaleX(-1);
+  }
+}
+
+.game-screen {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game-notification {
+  color: $blue;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 60px;
+  font-weight: 600;
+  background-color: rgb(123, 32, 73);
+  border-radius: 6px;
+  border: $white 2px solid;
+  padding: 6px;
+}
+
+.score {
+  &-points {
+    &__values {
+      font-size: 68px;
+      color: $blue;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: relative;
+    width: 100%;
+    height: 5px;
+    display: block;
+    background-color: $white;
+    border-radius: 6px;
+    box-shadow: 0 0 7px $blue;
+  }
+
+  &::before {
+    content: "";
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: $white;
+    border-radius: 6px;
+    box-shadow: 0 0 7px $blue;
+  }
+}
+
+.game-choice {
+  justify-content: center;
+
+  &__item {
+    margin-top: 30px;
+    margin-right: 30px;
+    background-color: $darkBlue;
+    width: 200px;
+    height: 200px;
+    border-radius: 6px;
+    border: 2px solid $white;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateZ(0);
+    transition: all 0.25s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lighten($darkBlue, 5%);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px 1px;
+      transition: all 0.25s;
+    }
+
+    &:active {
+      background-color: darken($darkBlue, 5%);
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  width: 500px;
+  line-height: 20px;
+
+  &.opened {
+    transition: all 0.25s;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &-wrapper {
+    background: linear-gradient(180deg, #30373f 0%, #000000 99.82%);
+    border-radius: 12px;
+    padding: 32px;
+    position: relative;
+    box-shadow: 0 0 10px 1px;
+
+    &::before {
+      width: 90%;
+      height: 90%;
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+    }
+  }
+
+  &-result {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 35px;
+    text-align: center;
+    color: $white;
+    margin-bottom: 50px;
+  }
+
+  &-button {
+    background: $darkBlue;
+    border: 1px $white solid;
+    border-radius: 6px;
+    padding: 12px 36px;
+    line-height: 19px;
+    color: $white;
+    width: max-content;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.25s;
+    width: 100%;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    transform: translateZ(0);
+
+    &:hover {
+      background: lighten($darkBlue, 5%);
+      transform: scale(1.05);
+      box-shadow: 0 0 10px 1px;
+    }
+
+    &:active {
+      background: darken($darkBlue, 5%);
+    }
+  }
+}
+
+.modal {
+  &-description {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 44px;
+    text-align: center;
+    color: $white;
+    margin-bottom: 50px;
+  }
+
+  &-choice {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 21px;
+    text-align: center;
+    color: $white;
+    margin-bottom: 50px;
+  }
+
+  &-languages {
+    justify-content: center;
+    column-gap: 40px;
+    margin-bottom: 30px;
+
+    &__button {
+      border: 2px $white solid;
+      background-color: $grey;
+      border-radius: 6px;
+      padding: 12px 36px;
+      line-height: 19px;
+      width: max-content;
+      cursor: pointer;
+      text-transform: uppercase;
+      width: 100%;
+      font-size: 20px;
+      font-weight: 700;
+      transition: all 0.25s;
+      transform: translateZ(0);
+
+      &:hover {
+        background: lighten($grey, 5%);
+        transform: scale(1.05);
+        box-shadow: 0 0 5px 1px;
+      }
+
+      &:active {
+        background: darken($grey, 5%);
+      }
+    }
+  }
+}
+
+.active-language {
+  background-color: $darkBlue;
+
+  &:hover {
+    background: lighten($darkBlue, 5%);
+    transform: scale(1.05);
+    box-shadow: 0 0 5px 1px;
+  }
+
+  &:active {
+    background: darken($darkBlue, 5%);
+  }
+}
+
+.overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.75);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+
+  &.opened {
+    visibility: visible;
+    opacity: 1;
+    z-index: 9;
+  }
+}
+
+.footer {
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+}
+
+.github-icon {
+  animation: blinking 5s infinite alternate;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 5px 1px;
+  }
+}
+
+.nickname {
+  color: $darkBlue;
+}
+
+.rock {
+  background-image: url("../img/rock.png");
+}
+.paper {
+  background-image: url("../img/paper.png");
+}
+.scissors {
+  background-image: url("../img/scissors.png");
+}
+
+@keyframes blinking {
+  from {
+    fill: $black;
+  }
+  to {
+    fill: $white;
+  }
+}
+
+@keyframes turn {
+  0% {
+    transform: scaleX(1);
+  }
+
+  50% {
+    transform: scaleX(-1);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.item-animate {
+  animation: turn 0.8s linear;
+  transition: animation 0.25s;
+}
+
+.player-animate {
+  animation: shadowScale 0.8s linear;
+  transition: animation 0.25s;
+}
+
+.opponent-animate {
+  animation: shadowScaleReverse 0.8s linear;
+  transition: animation 0.25s;
+}
+
+@keyframes shadowScale {
+  0% {
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 40px 3px rgba(255, 255, 255, 0.35);
+  }
+
+  100% {
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes shadowScaleReverse {
+  0% {
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0);
+    transform: scaleX(-1);
+  }
+
+  50% {
+    box-shadow: 0 0 40px 3px rgba(255, 255, 255, 0.35);
+    transform: scaleX(-1);
+  }
+
+  100% {
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0);
+    transform: scaleX(-1);
+  }
+}

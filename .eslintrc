@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": ["airbnb/base",
+  "plugin:import/errors",
+  "plugin:import/warnings",
+  "plugin:jsx-a11y/recommended",
+  "plugin:sonarjs/recommended",
+  "plugin:promise/recommended"],
+  "plugins": ["jsx-a11y", "optimize-regex", "sonarjs","prettier", "no-use-extend-native", "promise"],
+  "rules": {
+    "brace-style": "warn",
+    "no-param-reassign": "off" ,
+    "allowTernary": 0,
+    "optimize-regex/optimize-regex": "warn",
+    "sonarjs/cognitive-complexity": ["error", 30],
+    "no-use-extend-native/no-use-extend-native": 2,
+    "no-plusplus": "off",
+    "eol-last": "off",
+    "max-len": ["error",120],
+    "prefer-destructuring": "warn",
+    "indent": [
+      "off", "tab", "error",2
+    ]
+  }
+}

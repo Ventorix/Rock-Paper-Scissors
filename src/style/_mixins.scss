@@ -1,0 +1,23 @@
+@mixin button($bg: $violet) {
+  background: $bg;
+  border-radius: 6px;
+  padding: 12px 36px;
+  font-weight: 500;
+  line-height: 19px;
+  color: $white;
+  display: flex;
+  width: max-content;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.25s;
+}
+
+@mixin hoverButton($color: $violet) {
+  &:hover {
+    background: lighten($color, 5%);
+  }
+
+  &:active {
+    background: darken($color, 5%);
+  }
+}
